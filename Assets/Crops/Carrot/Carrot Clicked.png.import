@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqjetf3cpuqxg"
-path="res://.godot/imported/sunburst.png-c78ce3ba27de7591ae2d7850368cd826.ctex"
+uid="uid://4wqllivhmoux"
+path="res://.godot/imported/Carrot Clicked.png-aabb98a1f8ca26ccf64137ada1b4712e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/assets/img/sunburst.png"
-dest_files=["res://.godot/imported/sunburst.png-c78ce3ba27de7591ae2d7850368cd826.ctex"]
+source_file="res://Assets/Crops/Carrot/Carrot Clicked.png"
+dest_files=["res://.godot/imported/Carrot Clicked.png-aabb98a1f8ca26ccf64137ada1b4712e.ctex"]
 
 [params]
 

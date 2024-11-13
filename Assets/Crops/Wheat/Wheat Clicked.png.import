@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b04ajiofch4dr"
-path="res://.godot/imported/pixilart-drawing.png-5c34c3fb1f5192fc615282ede223cf40.ctex"
+uid="uid://dh7odd7vqm0xs"
+path="res://.godot/imported/Wheat Clicked.png-a693a247c1b271a5fcc4a339492599fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/pixilart-drawing.png"
-dest_files=["res://.godot/imported/pixilart-drawing.png-5c34c3fb1f5192fc615282ede223cf40.ctex"]
+source_file="res://Assets/Crops/Wheat/Wheat Clicked.png"
+dest_files=["res://.godot/imported/Wheat Clicked.png-a693a247c1b271a5fcc4a339492599fe.ctex"]
 
 [params]
 

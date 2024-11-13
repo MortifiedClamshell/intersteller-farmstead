@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-@onready var wheat_lable: Label = $WheatLable
+@onready var space_money_lable: Label = $SpaceMoneyLable
 
 func _on_game_wheat_changed(amount) -> void:
-	wheat_lable.text = str(amount) + " Wheat"
+	space_money_lable.text = str(amount) + " Space Money"
