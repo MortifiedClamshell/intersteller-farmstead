@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://cprjjm5h4ekcu"]
+
+[ext_resource type="Script" path="res://Scenes/game.gd" id="1_m7lfg"]
+[ext_resource type="Texture2D" uid="uid://b04ajiofch4dr" path="res://Assets/pixilart-drawing.png" id="2_6us8s"]
+[ext_resource type="Script" path="res://Scenes/counter.gd" id="3_uxv5b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvnvf"]
+bg_color = Color(0.263818, 0.245077, 0.762477, 1)
+
+[node name="game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m7lfg")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -315.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bvnvf")
+
+[node name="Wheat" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="Wheat"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = ExtResource("2_6us8s")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Counter" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -314.0
+offset_bottom = 55.0
+grow_horizontal = 2
+script = ExtResource("3_uxv5b")
+
+[node name="WheatLable" type="Label" parent="Counter"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0 Wheat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="wheat_changed" from="." to="Counter" method="_on_game_wheat_changed"]
+[connection signal="button_down" from="Wheat/TextureButton" to="." method="_on_texture_button_button_down"]
