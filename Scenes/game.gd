@@ -1,10 +1,15 @@
 extends Control
 
-var wheat = 0
-var click_amount = 1
+var profit = 0
+var wheat_amount = 1
+var carrot_amount = 5
 
-signal wheat_changed
+signal profit_changed
 
-func _on_texture_button_button_down() -> void:
-	wheat += click_amount
-	emit_signal("wheat_changed", wheat)
+func _on_wheat_button_button_down() -> void:
+	profit += wheat_amount
+	emit_signal("profit_changed", profit)
+	
+func _on_carrot_button_button_down() -> void:
+	profit += carrot_amount
+	emit_signal("profit_changed", profit)
