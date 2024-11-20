@@ -1,13 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cprjjm5h4ekcu"]
+[gd_scene load_steps=9 format=3 uid="uid://cprjjm5h4ekcu"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_m7lfg"]
 [ext_resource type="Texture2D" uid="uid://b0u42srl3unx5" path="res://Assets/Crops/Wheat/Wheat Unclicked.png" id="2_qfkpi"]
 [ext_resource type="Texture2D" uid="uid://dh7odd7vqm0xs" path="res://Assets/Crops/Wheat/Wheat Clicked.png" id="3_t7da6"]
 [ext_resource type="Script" path="res://Scenes/counter.gd" id="3_uxv5b"]
-[ext_resource type="Texture2D" uid="uid://ikplw84uj0u4" path="res://Assets/Grey Bar.png" id="4_2d335"]
 [ext_resource type="Texture2D" uid="uid://diqah7muje2fc" path="res://Assets/Crops/Carrot/Carrot Unclicked.png" id="4_3rv3r"]
 [ext_resource type="Texture2D" uid="uid://4wqllivhmoux" path="res://Assets/Crops/Carrot/Carrot Clicked.png" id="5_32rep"]
-[ext_resource type="Texture2D" uid="uid://2g8yc2yfpdbh" path="res://Assets/Green Bar.png" id="5_i5uo4"]
 [ext_resource type="Texture2D" uid="uid://bdumbr324blrr" path="res://Assets/Locked Button.png" id="6_gv8u2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvnvf"]
@@ -58,23 +56,6 @@ custom_minimum_size = Vector2(300, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "1 Space Money"
-
-[node name="Control" type="Control" parent="Wheat"]
-layout_mode = 2
-
-[node name="WheatProgress" type="TextureProgressBar" parent="Wheat/Control"]
-layout_mode = 2
-offset_left = -145.0
-offset_top = 10.0
-offset_right = -125.0
-offset_bottom = 12.0
-scale = Vector2(19, 10)
-max_value = 1.0
-texture_under = ExtResource("4_2d335")
-texture_progress = ExtResource("5_i5uo4")
-metadata/_edit_use_anchors_ = true
-
-[node name="WheatTimer" type="Timer" parent="Wheat/Control/WheatProgress"]
 
 [node name="Carrot" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -131,5 +112,4 @@ horizontal_alignment = 1
 
 [connection signal="profit_changed" from="." to="Counter" method="_on_game_profit_changed"]
 [connection signal="button_down" from="Wheat/WheatButton" to="." method="_on_wheat_button_button_down"]
-[connection signal="timeout" from="Wheat/Control/WheatProgress/WheatTimer" to="." method="_on_wheat_timer_timeout"]
 [connection signal="button_down" from="Carrot/CarrotButton" to="." method="_on_carrot_button_button_down"]
