@@ -1,15 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://cprjjm5h4ekcu"]
+[gd_scene load_steps=11 format=3 uid="uid://cprjjm5h4ekcu"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_m7lfg"]
+[ext_resource type="Texture2D" uid="uid://brin51inge757" path="res://Assets/17520.webp" id="2_kl1qn"]
 [ext_resource type="Texture2D" uid="uid://b0u42srl3unx5" path="res://Assets/Crops/Wheat/Wheat Unclicked.png" id="2_qfkpi"]
 [ext_resource type="Texture2D" uid="uid://dh7odd7vqm0xs" path="res://Assets/Crops/Wheat/Wheat Clicked.png" id="3_t7da6"]
 [ext_resource type="Script" path="res://Scenes/counter.gd" id="3_uxv5b"]
 [ext_resource type="Texture2D" uid="uid://diqah7muje2fc" path="res://Assets/Crops/Carrot/Carrot Unclicked.png" id="4_3rv3r"]
 [ext_resource type="Texture2D" uid="uid://4wqllivhmoux" path="res://Assets/Crops/Carrot/Carrot Clicked.png" id="5_32rep"]
 [ext_resource type="Texture2D" uid="uid://bdumbr324blrr" path="res://Assets/Locked Button.png" id="6_gv8u2"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvnvf"]
-bg_color = Color(0.263818, 0.245077, 0.762477, 1)
+[ext_resource type="Texture2D" uid="uid://cr3iodwaf4imp" path="res://Assets/Crops/Beet/Beet Button.png" id="8_8uduv"]
+[ext_resource type="Texture2D" uid="uid://o53yawn1tb1l" path="res://Assets/Crops/Beet/Beet Button Pressed.png" id="9_17psd"]
 
 [node name="game" type="Control"]
 layout_mode = 3
@@ -20,16 +20,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m7lfg")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_right = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_bvnvf")
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1157.0
+offset_bottom = 656.0
+texture = ExtResource("2_kl1qn")
+expand_mode = 1
 
 [node name="Wheat" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -77,6 +73,44 @@ texture_pressed = ExtResource("5_32rep")
 texture_disabled = ExtResource("6_gv8u2")
 stretch_mode = 0
 
+[node name="CarrotProfit" type="Label" parent="Carrot"]
+visible = false
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+text = "5 Space Money"
+
+[node name="CarrotUnlock" type="Button" parent="Carrot"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+text = "Unlock for 25 Space Money"
+
+[node name="Beet" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 370.0
+offset_right = 515.0
+offset_bottom = 470.0
+
+[node name="BeetButton" type="TextureButton" parent="Beet"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("8_8uduv")
+texture_pressed = ExtResource("9_17psd")
+texture_disabled = ExtResource("6_gv8u2")
+stretch_mode = 0
+
+[node name="BeetProfit" type="Label" parent="Beet"]
+visible = false
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+text = "25 Space Money"
+
+[node name="BeetUnlock" type="Button" parent="Beet"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+text = "Unlock for 250 Space Money"
+
 [node name="Counter" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
@@ -113,3 +147,6 @@ horizontal_alignment = 1
 [connection signal="profit_changed" from="." to="Counter" method="_on_game_profit_changed"]
 [connection signal="button_down" from="Wheat/WheatButton" to="." method="_on_wheat_button_button_down"]
 [connection signal="button_down" from="Carrot/CarrotButton" to="." method="_on_carrot_button_button_down"]
+[connection signal="pressed" from="Carrot/CarrotUnlock" to="." method="_on_carrot_unlock_pressed"]
+[connection signal="button_down" from="Beet/BeetButton" to="." method="_on_beet_button_button_down"]
+[connection signal="pressed" from="Beet/BeetUnlock" to="." method="_on_beet_unlock_pressed"]
