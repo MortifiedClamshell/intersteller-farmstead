@@ -27,19 +27,48 @@ offset_bottom = 656.0
 texture = ExtResource("2_kl1qn")
 expand_mode = 1
 
-[node name="Wheat" type="CenterContainer" parent="."]
+[node name="Cropsbg" type="ColorRect" parent="."]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 65.0
+offset_right = 565.0
+offset_bottom = 630.0
+color = Color(0.133333, 0.145098, 0.301961, 1)
+
+[node name="Crops" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = 150.0
-offset_right = -637.0
-offset_bottom = -398.0
+offset_left = 25.0
+offset_top = 70.0
+offset_right = -587.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="WheatButton" type="TextureButton" parent="Wheat"]
+[node name="CropsLable" type="Label" parent="Crops"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Crops"
+horizontal_alignment = 1
+
+[node name="CropsMenu" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(530, 500)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 120.0
+offset_right = 555.0
+offset_bottom = 620.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CropsMenu"]
+custom_minimum_size = Vector2(530, 900)
+layout_mode = 2
+
+[node name="Wheat" type="CenterContainer" parent="CropsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="WheatButton" type="TextureButton" parent="CropsMenu/VBoxContainer/Wheat"]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 texture_normal = ExtResource("2_qfkpi")
@@ -47,24 +76,32 @@ texture_pressed = ExtResource("3_t7da6")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="WheatProfit" type="Label" parent="Wheat"]
+[node name="WheatProfit" type="Label" parent="CropsMenu/VBoxContainer/Wheat"]
 custom_minimum_size = Vector2(300, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "1 Space Money"
 
-[node name="Carrot" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 15.0
-offset_top = -64.0
-offset_right = 515.0
-offset_bottom = 36.0
-grow_vertical = 2
+[node name="WheatAuto" type="Control" parent="CropsMenu/VBoxContainer/Wheat"]
+visible = false
+layout_mode = 2
 
-[node name="CarrotButton" type="TextureButton" parent="Carrot"]
+[node name="WheatAuto" type="Label" parent="CropsMenu/VBoxContainer/Wheat/WheatAuto"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+offset_left = 100.0
+offset_top = -45.0
+offset_right = 225.0
+offset_bottom = 45.0
+text = "1 Wheat per Second"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Carrot" type="CenterContainer" parent="CropsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="CarrotButton" type="TextureButton" parent="CropsMenu/VBoxContainer/Carrot"]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 disabled = true
@@ -73,25 +110,37 @@ texture_pressed = ExtResource("5_32rep")
 texture_disabled = ExtResource("6_gv8u2")
 stretch_mode = 0
 
-[node name="CarrotProfit" type="Label" parent="Carrot"]
+[node name="CarrotProfit" type="Label" parent="CropsMenu/VBoxContainer/Carrot"]
 visible = false
 custom_minimum_size = Vector2(300, 75)
 layout_mode = 2
 text = "5 Space Money"
 
-[node name="CarrotUnlock" type="Button" parent="Carrot"]
+[node name="CarrotUnlock" type="Button" parent="CropsMenu/VBoxContainer/Carrot"]
 custom_minimum_size = Vector2(300, 75)
 layout_mode = 2
 text = "Unlock for 25 Space Money"
 
-[node name="Beet" type="CenterContainer" parent="."]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 370.0
-offset_right = 515.0
-offset_bottom = 470.0
+[node name="CarrotAuto" type="Control" parent="CropsMenu/VBoxContainer/Carrot"]
+visible = false
+layout_mode = 2
 
-[node name="BeetButton" type="TextureButton" parent="Beet"]
+[node name="CarrotAuto" type="Label" parent="CropsMenu/VBoxContainer/Carrot/CarrotAuto"]
+custom_minimum_size = Vector2(145, 90)
+layout_mode = 0
+offset_left = 100.0
+offset_top = -45.0
+offset_right = 200.0
+offset_bottom = 45.0
+text = "1 Carrot per Second"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Beet" type="CenterContainer" parent="CropsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="BeetButton" type="TextureButton" parent="CropsMenu/VBoxContainer/Beet"]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 disabled = true
@@ -100,16 +149,87 @@ texture_pressed = ExtResource("9_17psd")
 texture_disabled = ExtResource("6_gv8u2")
 stretch_mode = 0
 
-[node name="BeetProfit" type="Label" parent="Beet"]
+[node name="BeetProfit" type="Label" parent="CropsMenu/VBoxContainer/Beet"]
 visible = false
 custom_minimum_size = Vector2(300, 75)
 layout_mode = 2
 text = "25 Space Money"
 
-[node name="BeetUnlock" type="Button" parent="Beet"]
+[node name="BeetUnlock" type="Button" parent="CropsMenu/VBoxContainer/Beet"]
 custom_minimum_size = Vector2(300, 75)
 layout_mode = 2
 text = "Unlock for 250 Space Money"
+
+[node name="Upgradesbg" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 65.0
+offset_right = 1130.0
+offset_bottom = 630.0
+color = Color(0.133333, 0.145098, 0.301961, 1)
+
+[node name="Upgrades" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 65.0
+offset_right = 1130.0
+offset_bottom = 125.0
+
+[node name="Label" type="Label" parent="Upgrades"]
+custom_minimum_size = Vector2(530, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AIUpgradesMenu" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 120.0
+offset_right = 1116.0
+offset_bottom = 617.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AIUpgradesMenu"]
+custom_minimum_size = Vector2(200, 900)
+layout_mode = 2
+
+[node name="WheatAuto" type="Control" parent="AIUpgradesMenu/VBoxContainer"]
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+
+[node name="WheatAIAuto" type="Button" parent="AIUpgradesMenu/VBoxContainer/WheatAuto"]
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 90.0
+text = "Unlock Wheat AI
+30 Space Money"
+autowrap_mode = 2
+
+[node name="WheatTimer" type="Timer" parent="AIUpgradesMenu/VBoxContainer/WheatAuto"]
+
+[node name="CarrotAuto" type="Control" parent="AIUpgradesMenu/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+
+[node name="CarrotAIAuto" type="Button" parent="AIUpgradesMenu/VBoxContainer/CarrotAuto"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 90.0
+text = "Unlock Carrot AI
+150 Space Money"
+autowrap_mode = 2
+
+[node name="CarrotTimer" type="Timer" parent="AIUpgradesMenu/VBoxContainer/CarrotAuto"]
+
+[node name="ButtonUpgradesMenu" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonUpgradesMenu"]
+layout_mode = 2
 
 [node name="Counter" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -127,26 +247,13 @@ text = "0 Space Money"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Crops" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 68.0
-offset_right = -613.0
-offset_bottom = -522.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CropsLable" type="Label" parent="Crops"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Crops"
-horizontal_alignment = 1
-
 [connection signal="profit_changed" from="." to="Counter" method="_on_game_profit_changed"]
-[connection signal="button_down" from="Wheat/WheatButton" to="." method="_on_wheat_button_button_down"]
-[connection signal="button_down" from="Carrot/CarrotButton" to="." method="_on_carrot_button_button_down"]
-[connection signal="pressed" from="Carrot/CarrotUnlock" to="." method="_on_carrot_unlock_pressed"]
-[connection signal="button_down" from="Beet/BeetButton" to="." method="_on_beet_button_button_down"]
-[connection signal="pressed" from="Beet/BeetUnlock" to="." method="_on_beet_unlock_pressed"]
+[connection signal="button_down" from="CropsMenu/VBoxContainer/Wheat/WheatButton" to="." method="_on_wheat_button_button_down"]
+[connection signal="button_down" from="CropsMenu/VBoxContainer/Carrot/CarrotButton" to="." method="_on_carrot_button_button_down"]
+[connection signal="pressed" from="CropsMenu/VBoxContainer/Carrot/CarrotUnlock" to="." method="_on_carrot_unlock_pressed"]
+[connection signal="button_down" from="CropsMenu/VBoxContainer/Beet/BeetButton" to="." method="_on_beet_button_button_down"]
+[connection signal="pressed" from="CropsMenu/VBoxContainer/Beet/BeetUnlock" to="." method="_on_beet_unlock_pressed"]
+[connection signal="pressed" from="AIUpgradesMenu/VBoxContainer/WheatAuto/WheatAIAuto" to="." method="_on_wheat_ai_auto_pressed"]
+[connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/WheatAuto/WheatTimer" to="." method="_on_wheat_timer_timeout"]
+[connection signal="pressed" from="AIUpgradesMenu/VBoxContainer/CarrotAuto/CarrotAIAuto" to="." method="_on_carrot_ai_auto_pressed"]
+[connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/CarrotAuto/CarrotTimer" to="." method="_on_carrot_timer_timeout"]
