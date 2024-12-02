@@ -160,6 +160,22 @@ custom_minimum_size = Vector2(300, 75)
 layout_mode = 2
 text = "Unlock for 250 Space Money"
 
+[node name="BeetAuto" type="Control" parent="CropsMenu/VBoxContainer/Beet"]
+visible = false
+layout_mode = 2
+
+[node name="BeetAuto" type="Label" parent="CropsMenu/VBoxContainer/Beet/BeetAuto"]
+custom_minimum_size = Vector2(145, 90)
+layout_mode = 0
+offset_left = 100.0
+offset_top = -45.0
+offset_right = 200.0
+offset_bottom = 45.0
+text = "1 Beet per Second"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Upgradesbg" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 600.0
@@ -223,6 +239,21 @@ autowrap_mode = 2
 
 [node name="CarrotTimer" type="Timer" parent="AIUpgradesMenu/VBoxContainer/CarrotAuto"]
 
+[node name="BeetAuto" type="Control" parent="AIUpgradesMenu/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+
+[node name="BeetAIAuto" type="Button" parent="AIUpgradesMenu/VBoxContainer/BeetAuto"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 90.0
+text = "Unlock Beet AI
+500 Space Money"
+autowrap_mode = 2
+
+[node name="BeetTimer" type="Timer" parent="AIUpgradesMenu/VBoxContainer/BeetAuto"]
+
 [node name="ButtonUpgradesMenu" type="ScrollContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
@@ -257,3 +288,6 @@ vertical_alignment = 1
 [connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/WheatAuto/WheatTimer" to="." method="_on_wheat_timer_timeout"]
 [connection signal="pressed" from="AIUpgradesMenu/VBoxContainer/CarrotAuto/CarrotAIAuto" to="." method="_on_carrot_ai_auto_pressed"]
 [connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/CarrotAuto/CarrotTimer" to="." method="_on_carrot_timer_timeout"]
+[connection signal="pressed" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetAIAuto" to="." method="_on_beet_ai_auto_pressed"]
+[connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetTimer" to="." method="_on_beet_timer_timeout"]
+[connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetTimer" to="." method="_on_carrot_timer_timeout"]
