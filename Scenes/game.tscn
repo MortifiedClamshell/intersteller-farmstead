@@ -93,7 +93,7 @@ offset_left = 100.0
 offset_top = -45.0
 offset_right = 225.0
 offset_bottom = 45.0
-text = "1 Wheat per Second"
+text = "1 Space Money per Second"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -114,7 +114,7 @@ stretch_mode = 0
 visible = false
 custom_minimum_size = Vector2(300, 75)
 layout_mode = 2
-text = "5 Space Money"
+text = "10 Space Money"
 
 [node name="CarrotUnlock" type="Button" parent="CropsMenu/VBoxContainer/Carrot"]
 custom_minimum_size = Vector2(300, 75)
@@ -132,7 +132,7 @@ offset_left = 100.0
 offset_top = -45.0
 offset_right = 200.0
 offset_bottom = 45.0
-text = "1 Carrot per Second"
+text = "1 Space Money per Second"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -171,7 +171,7 @@ offset_left = 100.0
 offset_top = -45.0
 offset_right = 200.0
 offset_bottom = 45.0
-text = "1 Beet per Second"
+text = "1 Space Money per Second"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -201,10 +201,10 @@ vertical_alignment = 1
 
 [node name="AIUpgradesMenu" type="ScrollContainer" parent="."]
 layout_mode = 0
-offset_left = 900.0
+offset_left = 885.0
 offset_top = 120.0
-offset_right = 1116.0
-offset_bottom = 617.0
+offset_right = 1110.0
+offset_bottom = 620.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AIUpgradesMenu"]
 custom_minimum_size = Vector2(200, 900)
@@ -249,18 +249,59 @@ layout_mode = 0
 offset_right = 200.0
 offset_bottom = 90.0
 text = "Unlock Beet AI
-500 Space Money"
+450 Space Money"
 autowrap_mode = 2
 
 [node name="BeetTimer" type="Timer" parent="AIUpgradesMenu/VBoxContainer/BeetAuto"]
 
 [node name="ButtonUpgradesMenu" type="ScrollContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 620.0
+offset_top = 120.0
+offset_right = 845.0
+offset_bottom = 620.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ButtonUpgradesMenu"]
+custom_minimum_size = Vector2(200, 900)
 layout_mode = 2
+
+[node name="WheatUpgrade" type="Control" parent="ButtonUpgradesMenu/VBoxContainer"]
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+
+[node name="WheatUpgrade" type="Button" parent="ButtonUpgradesMenu/VBoxContainer/WheatUpgrade"]
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 90.0
+text = "Upgrade Wheat Price by x1.5
+30 Space Money"
+autowrap_mode = 2
+
+[node name="CarrotUpgrade" type="Control" parent="ButtonUpgradesMenu/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+
+[node name="CarrotUpgrade" type="Button" parent="ButtonUpgradesMenu/VBoxContainer/CarrotUpgrade"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 90.0
+text = "Upgrade Carrot Price by x1.5
+150 Space Money"
+autowrap_mode = 2
+
+[node name="BeetUpgrade" type="Control" parent="ButtonUpgradesMenu/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+
+[node name="BeetUpgrade" type="Button" parent="ButtonUpgradesMenu/VBoxContainer/BeetUpgrade"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 90.0
+text = "Upgrade Beeet Price by x1.5
+450 Space Money"
+autowrap_mode = 2
 
 [node name="Counter" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -289,5 +330,8 @@ vertical_alignment = 1
 [connection signal="pressed" from="AIUpgradesMenu/VBoxContainer/CarrotAuto/CarrotAIAuto" to="." method="_on_carrot_ai_auto_pressed"]
 [connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/CarrotAuto/CarrotTimer" to="." method="_on_carrot_timer_timeout"]
 [connection signal="pressed" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetAIAuto" to="." method="_on_beet_ai_auto_pressed"]
-[connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetTimer" to="." method="_on_beet_timer_timeout"]
 [connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetTimer" to="." method="_on_carrot_timer_timeout"]
+[connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetTimer" to="." method="_on_beet_timer_timeout"]
+[connection signal="pressed" from="ButtonUpgradesMenu/VBoxContainer/WheatUpgrade/WheatUpgrade" to="." method="_on_wheat_upgrade_pressed"]
+[connection signal="pressed" from="ButtonUpgradesMenu/VBoxContainer/CarrotUpgrade/CarrotUpgrade" to="." method="_on_carrot_upgrade_pressed"]
+[connection signal="pressed" from="ButtonUpgradesMenu/VBoxContainer/BeetUpgrade/BeetUpgrade" to="." method="_on_beet_upgrade_pressed"]

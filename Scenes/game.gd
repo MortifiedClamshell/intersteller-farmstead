@@ -1,6 +1,6 @@
 extends Control
 
-var profit = 10000000000
+var profit = 450
 var auto = 1
 
 #Wheat variables
@@ -8,20 +8,23 @@ var wheat_amount = 1
 var wheat_auto_cost = 30
 var wheat_auto_amount = 1
 var wheat_auto_upgrade = 0
+var wheat_upgrade_cost = 30
 
 #Carrot variables
 var carrot_button_cost = 25
-var carrot_amount = 5
-var carrot_auto_cost = 30
+var carrot_amount = 10
+var carrot_auto_cost = 150
 var carrot_auto_amount = 1
 var carrot_auto_upgrade = 0
+var carrot_upgrade_cost = 150
 
 #Beet variables
 var beet_button_cost = 250
 var beet_amount = 25
-var beet_auto_cost = 500
+var beet_auto_cost = 450
 var beet_auto_amount = 1
 var beet_auto_upgrade = 0
+var beet_upgrade_cost = 450
 
 signal profit_changed
 
@@ -47,7 +50,7 @@ func _on_wheat_ai_auto_pressed() -> void:
 			wheat_auto_cost *= 2
 			wheat_auto_amount *= 1.5
 			$AIUpgradesMenu/VBoxContainer/WheatAuto/WheatAIAuto.text = "Upgrade Wheat Auto by x1.5 \n Cost " + str(wheat_auto_cost)
-			$CropsMenu/VBoxContainer/Wheat/WheatAuto/WheatAuto.text = str(snapped(float(wheat_auto_amount*wheat_amount), 0.01)) + "\n Wheat per second"
+			$CropsMenu/VBoxContainer/Wheat/WheatAuto/WheatAuto.text = str(snapped(float(wheat_auto_amount*wheat_amount), 0.01)) + "\n Space Money per second"
 	else:
 		pass
 		
@@ -56,7 +59,17 @@ func _on_wheat_timer_timeout() -> void:
 	emit_signal("profit_changed", profit)
 	$AIUpgradesMenu/VBoxContainer/WheatAuto/WheatTimer.start(auto)
 
-
+func _on_wheat_upgrade_pressed() -> void:
+	if profit >= wheat_upgrade_cost:
+		profit -= wheat_upgrade_cost
+		emit_signal("profit_changed", profit)
+		wheat_amount *= 1.5
+		wheat_upgrade_cost *= 2
+		$CropsMenu/VBoxContainer/Wheat/WheatProfit.text = str(snapped(float(wheat_amount), 0.01)) + " Space Money"
+		$ButtonUpgradesMenu/VBoxContainer/WheatUpgrade/WheatUpgrade.text = "Upgrade Wheat Price by x1.5\n" + str(wheat_upgrade_cost) + " Space Money"
+		$CropsMenu/VBoxContainer/Wheat/WheatAuto/WheatAuto.text = str(snapped(float(wheat_auto_amount*wheat_amount), 0.01)) + "\n Space Money per second"
+	else:
+		pass
 
 #Carot
 func _on_carrot_unlock_pressed() -> void:
@@ -68,6 +81,8 @@ func _on_carrot_unlock_pressed() -> void:
 		$CropsMenu/VBoxContainer/Carrot/CarrotButton.disabled = false
 		$CropsMenu/VBoxContainer/Carrot/CarrotProfit.visible = true
 		$AIUpgradesMenu/VBoxContainer/CarrotAuto.visible = true
+		$ButtonUpgradesMenu/VBoxContainer/CarrotUpgrade.visible = true
+		$CropsMenu/VBoxContainer/Carrot/CarrotAuto/CarrotAuto.text = str(snapped(float(carrot_auto_amount*carrot_amount), 0.01)) + "\n Space Money per second"
 	else:
 		pass
 		
@@ -91,7 +106,7 @@ func _on_carrot_ai_auto_pressed() -> void:
 			carrot_auto_cost *= 2
 			carrot_auto_amount *= 1.5
 			$AIUpgradesMenu/VBoxContainer/CarrotAuto/CarrotAIAuto.text = "Upgrade Carrot Auto by x1.5 \n Cost " + str(carrot_auto_cost)
-			$CropsMenu/VBoxContainer/Carrot/CarrotAuto/CarrotAuto.text = str(snapped(float(carrot_auto_amount*carrot_amount), 0.01)) + "\n Carrot per second"
+			$CropsMenu/VBoxContainer/Carrot/CarrotAuto/CarrotAuto.text = str(snapped(float(carrot_auto_amount*carrot_amount), 0.01)) + "\n Space Money per second"
 	else:
 		pass
 	
@@ -99,6 +114,18 @@ func _on_carrot_timer_timeout() -> void:
 	profit += carrot_amount*carrot_auto_amount
 	emit_signal("profit_changed", profit)
 	$AIUpgradesMenu/VBoxContainer/CarrotAuto/CarrotTimer.start(auto)
+
+func _on_carrot_upgrade_pressed() -> void:
+	if profit >= carrot_upgrade_cost:
+		profit -= carrot_upgrade_cost
+		emit_signal("profit_changed", profit)
+		carrot_amount *= 1.5
+		carrot_upgrade_cost *= 2
+		$CropsMenu/VBoxContainer/Carrot/CarrotProfit.text = str(snapped(float(carrot_amount), 0.01)) + " Space Money"
+		$ButtonUpgradesMenu/VBoxContainer/CarrotUpgrade/CarrotUpgrade.text = "Upgrade Carrot Price by x1.5\n" + str(carrot_upgrade_cost) + " Space Money"
+		$CropsMenu/VBoxContainer/Carrot/CarrotAuto/CarrotAuto.text = str(snapped(float(carrot_auto_amount*carrot_amount), 0.01)) + "\n Space Money per second"
+	else:
+		pass
 
 #Beet
 func _on_beet_unlock_pressed() -> void:
@@ -110,6 +137,8 @@ func _on_beet_unlock_pressed() -> void:
 		$CropsMenu/VBoxContainer/Beet/BeetButton.disabled = false
 		$CropsMenu/VBoxContainer/Beet/BeetProfit.visible = true
 		$AIUpgradesMenu/VBoxContainer/BeetAuto.visible = true
+		$ButtonUpgradesMenu/VBoxContainer/BeetUpgrade.visible = true
+		$CropsMenu/VBoxContainer/Beet/BeetAuto/BeetAuto.text = str(snapped(float(beet_auto_amount*beet_amount), 0.01)) + "\n Space Money per second"
 	else:
 		pass
 
@@ -133,7 +162,7 @@ func _on_beet_ai_auto_pressed() -> void:
 			beet_auto_cost *= 2
 			beet_auto_amount *= 1.5
 			$AIUpgradesMenu/VBoxContainer/BeetAuto/BeetAIAuto.text = "Upgrade Beet Auto by x1.5 \n Cost " + str(beet_auto_cost)
-			$CropsMenu/VBoxContainer/Beet/BeetAuto/BeetAuto.text = str(snapped(float(beet_auto_amount*beet_amount), 0.01)) + "\n Beet per second"
+			$CropsMenu/VBoxContainer/Beet/BeetAuto/BeetAuto.text = str(snapped(float(beet_auto_amount*beet_amount), 0.01)) + "\n Space Money per second"
 	else:
 		pass
 	
@@ -142,6 +171,14 @@ func _on_beet_timer_timeout() -> void:
 	emit_signal("profit_changed", profit)
 	$AIUpgradesMenu/VBoxContainer/BeetAuto/BeetTimer.start(auto)
 
-
-func _on_wheat_upgrade_pressed() -> void:
-	pass # Replace with function body.
+func _on_beet_upgrade_pressed() -> void:
+	if profit >= beet_upgrade_cost:
+		profit -= beet_upgrade_cost
+		emit_signal("profit_changed", profit)
+		beet_amount *= 1.5
+		beet_upgrade_cost *= 2
+		$CropsMenu/VBoxContainer/Beet/BeetProfit.text = str(snapped(float(beet_amount), 0.01)) + " Space Money"
+		$ButtonUpgradesMenu/VBoxContainer/BeetUpgrade/BeetUpgrade.text = "Upgrade Beet Price by x1.5\n" + str(beet_upgrade_cost) + " Space Money"
+		$CropsMenu/VBoxContainer/Beet/BeetAuto/BeetAuto.text = str(snapped(float(beet_auto_amount*beet_amount), 0.01)) + "\n Space Money per second"
+	else:
+		pass
