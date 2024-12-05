@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://brin51inge757" path="res://Assets/17520.webp" id="2_kl1qn"]
 [ext_resource type="Texture2D" uid="uid://wa4tu1dh5pio" path="res://Assets/Crops/Wheat/Updated Wheat Unclicked.png" id="3_j73ll"]
 [ext_resource type="Script" path="res://Scenes/counter.gd" id="3_uxv5b"]
-[ext_resource type="Texture2D" uid="uid://diqah7muje2fc" path="res://Assets/Crops/Carrot/Carrot Unclicked.png" id="4_3rv3r"]
 [ext_resource type="Texture2D" uid="uid://bt0ettrnkr6km" path="res://Assets/Crops/Wheat/Updated Wheat Clicked.png" id="4_go8a0"]
-[ext_resource type="Texture2D" uid="uid://4wqllivhmoux" path="res://Assets/Crops/Carrot/Carrot Clicked.png" id="5_32rep"]
+[ext_resource type="Texture2D" uid="uid://b0h0tr3d2biq2" path="res://Assets/Crops/Carrot/Updated Carrot Unclicked.png" id="5_qb76j"]
+[ext_resource type="Texture2D" uid="uid://c67rb26mvyre" path="res://Assets/Crops/Carrot/Updated Carrot Clicked.png" id="6_ahk0q"]
 [ext_resource type="Texture2D" uid="uid://bdumbr324blrr" path="res://Assets/Locked Button.png" id="6_gv8u2"]
 [ext_resource type="Texture2D" uid="uid://cr3iodwaf4imp" path="res://Assets/Crops/Beet/Beet Button.png" id="8_8uduv"]
 [ext_resource type="Texture2D" uid="uid://o53yawn1tb1l" path="res://Assets/Crops/Beet/Beet Button Pressed.png" id="9_17psd"]
@@ -106,8 +106,8 @@ layout_mode = 2
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 disabled = true
-texture_normal = ExtResource("4_3rv3r")
-texture_pressed = ExtResource("5_32rep")
+texture_normal = ExtResource("5_qb76j")
+texture_pressed = ExtResource("6_ahk0q")
 texture_disabled = ExtResource("6_gv8u2")
 stretch_mode = 0
 
@@ -331,8 +331,8 @@ vertical_alignment = 1
 [connection signal="pressed" from="AIUpgradesMenu/VBoxContainer/CarrotAuto/CarrotAIAuto" to="." method="_on_carrot_ai_auto_pressed"]
 [connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/CarrotAuto/CarrotTimer" to="." method="_on_carrot_timer_timeout"]
 [connection signal="pressed" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetAIAuto" to="." method="_on_beet_ai_auto_pressed"]
-[connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetTimer" to="." method="_on_beet_timer_timeout"]
 [connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetTimer" to="." method="_on_carrot_timer_timeout"]
+[connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetTimer" to="." method="_on_beet_timer_timeout"]
 [connection signal="pressed" from="ButtonUpgradesMenu/VBoxContainer/WheatUpgrade/WheatUpgrade" to="." method="_on_wheat_upgrade_pressed"]
 [connection signal="pressed" from="ButtonUpgradesMenu/VBoxContainer/CarrotUpgrade/CarrotUpgrade" to="." method="_on_carrot_upgrade_pressed"]
 [connection signal="pressed" from="ButtonUpgradesMenu/VBoxContainer/BeetUpgrade/BeetUpgrade" to="." method="_on_beet_upgrade_pressed"]
