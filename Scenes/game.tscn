@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bt0ettrnkr6km" path="res://Assets/Crops/Wheat/Updated Wheat Clicked.png" id="4_go8a0"]
 [ext_resource type="Texture2D" uid="uid://b0h0tr3d2biq2" path="res://Assets/Crops/Carrot/Updated Carrot Unclicked.png" id="5_qb76j"]
 [ext_resource type="Texture2D" uid="uid://c67rb26mvyre" path="res://Assets/Crops/Carrot/Updated Carrot Clicked.png" id="6_ahk0q"]
-[ext_resource type="Texture2D" uid="uid://bdumbr324blrr" path="res://Assets/Locked Button.png" id="6_gv8u2"]
+[ext_resource type="Texture2D" uid="uid://bkjdhd1u2i3el" path="res://Assets/Updated Locked Button.png" id="7_8fumg"]
 [ext_resource type="Texture2D" uid="uid://cr3iodwaf4imp" path="res://Assets/Crops/Beet/Beet Button.png" id="8_8uduv"]
 [ext_resource type="Texture2D" uid="uid://o53yawn1tb1l" path="res://Assets/Crops/Beet/Beet Button Pressed.png" id="9_17psd"]
 
@@ -108,7 +108,7 @@ layout_mode = 2
 disabled = true
 texture_normal = ExtResource("5_qb76j")
 texture_pressed = ExtResource("6_ahk0q")
-texture_disabled = ExtResource("6_gv8u2")
+texture_disabled = ExtResource("7_8fumg")
 stretch_mode = 0
 
 [node name="CarrotProfit" type="Label" parent="CropsMenu/VBoxContainer/Carrot"]
@@ -147,7 +147,7 @@ layout_mode = 2
 disabled = true
 texture_normal = ExtResource("8_8uduv")
 texture_pressed = ExtResource("9_17psd")
-texture_disabled = ExtResource("6_gv8u2")
+texture_disabled = ExtResource("7_8fumg")
 stretch_mode = 0
 
 [node name="BeetProfit" type="Label" parent="CropsMenu/VBoxContainer/Beet"]
