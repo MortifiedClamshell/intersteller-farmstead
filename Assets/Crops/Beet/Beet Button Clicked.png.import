@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biva52udbvcu8"
-path="res://.godot/imported/84774-square-art-pixel-rectangle-cat-hd-image-free-png.png-e5ff1a6385c8c2ae0f029b6a039bea8d.ctex"
+uid="uid://bjh4n7jxxna6v"
+path="res://.godot/imported/Beet Button Clicked.png-2c3da65801b3169d83513bdedddbdebd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/84774-square-art-pixel-rectangle-cat-hd-image-free-png.png"
-dest_files=["res://.godot/imported/84774-square-art-pixel-rectangle-cat-hd-image-free-png.png-e5ff1a6385c8c2ae0f029b6a039bea8d.ctex"]
+source_file="res://Assets/Crops/Beet/Beet Button Clicked.png"
+dest_files=["res://.godot/imported/Beet Button Clicked.png-2c3da65801b3169d83513bdedddbdebd.ctex"]
 
 [params]
 

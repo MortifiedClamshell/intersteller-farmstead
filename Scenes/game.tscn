@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b0h0tr3d2biq2" path="res://Assets/Crops/Carrot/Updated Carrot Unclicked.png" id="5_qb76j"]
 [ext_resource type="Texture2D" uid="uid://c67rb26mvyre" path="res://Assets/Crops/Carrot/Updated Carrot Clicked.png" id="6_ahk0q"]
 [ext_resource type="Texture2D" uid="uid://bkjdhd1u2i3el" path="res://Assets/Updated Locked Button.png" id="7_8fumg"]
-[ext_resource type="Texture2D" uid="uid://cr3iodwaf4imp" path="res://Assets/Crops/Beet/Beet Button.png" id="8_8uduv"]
-[ext_resource type="Texture2D" uid="uid://o53yawn1tb1l" path="res://Assets/Crops/Beet/Beet Button Pressed.png" id="9_17psd"]
+[ext_resource type="Texture2D" uid="uid://d0c6eqx33ixas" path="res://Assets/Crops/Beet/Beet Button Unclicked.png" id="8_ry3h1"]
+[ext_resource type="Texture2D" uid="uid://bjh4n7jxxna6v" path="res://Assets/Crops/Beet/Beet Button Clicked.png" id="9_eimd4"]
 
 [node name="game" type="Control"]
 layout_mode = 3
@@ -145,8 +145,8 @@ layout_mode = 2
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 disabled = true
-texture_normal = ExtResource("8_8uduv")
-texture_pressed = ExtResource("9_17psd")
+texture_normal = ExtResource("8_ry3h1")
+texture_pressed = ExtResource("9_eimd4")
 texture_disabled = ExtResource("7_8fumg")
 stretch_mode = 0
 
@@ -166,6 +166,45 @@ visible = false
 layout_mode = 2
 
 [node name="BeetAuto" type="Label" parent="CropsMenu/VBoxContainer/Beet/BeetAuto"]
+custom_minimum_size = Vector2(145, 90)
+layout_mode = 0
+offset_left = 100.0
+offset_top = -45.0
+offset_right = 200.0
+offset_bottom = 45.0
+text = "1 Space Money per Second"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Potato" type="CenterContainer" parent="CropsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="PotatoButton" type="TextureButton" parent="CropsMenu/VBoxContainer/Potato"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("8_ry3h1")
+texture_pressed = ExtResource("9_eimd4")
+texture_disabled = ExtResource("7_8fumg")
+stretch_mode = 0
+
+[node name="PotatoProfit" type="Label" parent="CropsMenu/VBoxContainer/Potato"]
+visible = false
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+text = "250 Space Money"
+
+[node name="PotatoUnlock" type="Button" parent="CropsMenu/VBoxContainer/Potato"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+text = "Unlock for 2500 Space Money"
+
+[node name="PotatoAuto" type="Control" parent="CropsMenu/VBoxContainer/Potato"]
+visible = false
+layout_mode = 2
+
+[node name="PotatoAuto" type="Label" parent="CropsMenu/VBoxContainer/Potato/PotatoAuto"]
 custom_minimum_size = Vector2(145, 90)
 layout_mode = 0
 offset_left = 100.0
@@ -255,6 +294,21 @@ autowrap_mode = 2
 
 [node name="BeetTimer" type="Timer" parent="AIUpgradesMenu/VBoxContainer/BeetAuto"]
 
+[node name="PotatoAuto" type="Control" parent="AIUpgradesMenu/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+
+[node name="PotatoAIAuto" type="Button" parent="AIUpgradesMenu/VBoxContainer/PotatoAuto"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 90.0
+text = "Unlock Potato AI
+4000 Space Money"
+autowrap_mode = 2
+
+[node name="PotatoTimer" type="Timer" parent="AIUpgradesMenu/VBoxContainer/PotatoAuto"]
+
 [node name="ButtonUpgradesMenu" type="ScrollContainer" parent="."]
 layout_mode = 0
 offset_left = 620.0
@@ -304,6 +358,19 @@ text = "Upgrade Beeet Price by x1.5
 450 Space Money"
 autowrap_mode = 2
 
+[node name="PotatoUpgrade" type="Control" parent="ButtonUpgradesMenu/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+
+[node name="PotatoUpgrade" type="Button" parent="ButtonUpgradesMenu/VBoxContainer/PotatoUpgrade"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 90.0
+text = "Upgrade Potato Price by x1.5
+4000 Space Money"
+autowrap_mode = 2
+
 [node name="Counter" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
@@ -326,13 +393,17 @@ vertical_alignment = 1
 [connection signal="pressed" from="CropsMenu/VBoxContainer/Carrot/CarrotUnlock" to="." method="_on_carrot_unlock_pressed"]
 [connection signal="button_down" from="CropsMenu/VBoxContainer/Beet/BeetButton" to="." method="_on_beet_button_button_down"]
 [connection signal="pressed" from="CropsMenu/VBoxContainer/Beet/BeetUnlock" to="." method="_on_beet_unlock_pressed"]
+[connection signal="button_down" from="CropsMenu/VBoxContainer/Potato/PotatoButton" to="." method="_on_potato_button_button_down"]
+[connection signal="pressed" from="CropsMenu/VBoxContainer/Potato/PotatoUnlock" to="." method="_on_potato_unlock_pressed"]
 [connection signal="pressed" from="AIUpgradesMenu/VBoxContainer/WheatAuto/WheatAIAuto" to="." method="_on_wheat_ai_auto_pressed"]
 [connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/WheatAuto/WheatTimer" to="." method="_on_wheat_timer_timeout"]
 [connection signal="pressed" from="AIUpgradesMenu/VBoxContainer/CarrotAuto/CarrotAIAuto" to="." method="_on_carrot_ai_auto_pressed"]
 [connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/CarrotAuto/CarrotTimer" to="." method="_on_carrot_timer_timeout"]
 [connection signal="pressed" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetAIAuto" to="." method="_on_beet_ai_auto_pressed"]
-[connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetTimer" to="." method="_on_carrot_timer_timeout"]
 [connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/BeetAuto/BeetTimer" to="." method="_on_beet_timer_timeout"]
+[connection signal="pressed" from="AIUpgradesMenu/VBoxContainer/PotatoAuto/PotatoAIAuto" to="." method="_on_potato_ai_auto_pressed"]
+[connection signal="timeout" from="AIUpgradesMenu/VBoxContainer/PotatoAuto/PotatoTimer" to="." method="_on_potato_timer_timeout"]
 [connection signal="pressed" from="ButtonUpgradesMenu/VBoxContainer/WheatUpgrade/WheatUpgrade" to="." method="_on_wheat_upgrade_pressed"]
 [connection signal="pressed" from="ButtonUpgradesMenu/VBoxContainer/CarrotUpgrade/CarrotUpgrade" to="." method="_on_carrot_upgrade_pressed"]
 [connection signal="pressed" from="ButtonUpgradesMenu/VBoxContainer/BeetUpgrade/BeetUpgrade" to="." method="_on_beet_upgrade_pressed"]
+[connection signal="pressed" from="ButtonUpgradesMenu/VBoxContainer/PotatoUpgrade/PotatoUpgrade" to="." method="_on_potato_upgrade_pressed"]

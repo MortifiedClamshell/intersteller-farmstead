@@ -1,6 +1,6 @@
 extends Control
 
-var profit = 0
+var profit = 100000000000000
 var auto = 1
 
 #Wheat variables
@@ -25,6 +25,14 @@ var beet_auto_cost = 450
 var beet_auto_amount = 1/1.5
 var beet_auto_obtained = false
 var beet_upgrade_cost = 450
+
+#Potato variables
+var potato_button_cost = 2500
+var potato_amount = 250
+var potato_auto_cost = 4000
+var potato_auto_amount = 1/1.5
+var potato_auto_obtained = false
+var potato_upgrade_cost = 4000
 
 signal profit_changed
 
@@ -189,5 +197,55 @@ func _on_beet_upgrade_pressed() -> void:
 		beet_amount *= 1.5
 		beet_upgrade_cost *= 2
 		update_beet()
+	else:
+		pass
+
+#Potato
+func update_potato() -> void:
+	$CropsMenu/VBoxContainer/Potato/PotatoAuto/PotatoAuto.text = str(snapped(float(potato_auto_amount*potato_amount), 0.01)) + "\n Space Money per second"
+	$CropsMenu/VBoxContainer/Potato/PotatoProfit.text = "\n +" + str(snapped(float(potato_amount), 0.01)) + " Space Money"
+	$ButtonUpgradesMenu/VBoxContainer/PotatoUpgrade/PotatoUpgrade.text = "Upgrade Potato Price by x1.5\n" + str(potato_upgrade_cost) + " Space Money"
+
+func _on_potato_unlock_pressed() -> void:
+	if profit >= potato_button_cost:
+		profit -= potato_button_cost
+		emit_signal("profit_changed", profit)
+		$CropsMenu/VBoxContainer/Potato/PotatoUnlock.disabled = true
+		$CropsMenu/VBoxContainer/Potato/PotatoUnlock.visible = false
+		$CropsMenu/VBoxContainer/Potato/PotatoButton.disabled = false
+		$CropsMenu/VBoxContainer/Potato/PotatoProfit.visible = true
+		$AIUpgradesMenu/VBoxContainer/PotatoAuto.visible = true
+		$ButtonUpgradesMenu/VBoxContainer/PotatoUpgrade.visible = true
+		update_potato()
+	else:
+		pass
+
+func _on_potato_button_button_down() -> void:
+	profit += beet_amount
+	emit_signal("profit_changed", profit)
+
+func _on_potato_ai_auto_pressed() -> void:
+	ai_auto_pressed(potato_auto_cost,potato_auto_obtained, $AIUpgradesMenu/VBoxContainer/PotatoAuto/PotatoTimer)
+	if not potato_auto_obtained and $AIUpgradesMenu/VBoxContainer/PotatoAuto/PotatoTimer.time_left >0:
+		potato_auto_obtained = true
+		$CropsMenu/VBoxContainer/Potato/PotatoAuto.visible = true
+	if potato_auto_obtained:
+		potato_auto_cost *= 2
+		potato_auto_amount  *= 1.5
+		$AIUpgradesMenu/VBoxContainer/PotatoAuto/PotatoAIAuto.text = "Upgrade Potato Auto by x1.5 \n Cost " + str(potato_auto_cost) + " Space Money"
+	update_potato()
+
+func _on_potato_timer_timeout() -> void:
+	profit += potato_amount*potato_auto_amount
+	emit_signal("profit_changed", profit)
+	$AIUpgradesMenu/VBoxContainer/PotatoAuto/PotatoTimer.start(auto)
+
+func _on_potato_upgrade_pressed() -> void:
+	if profit >= potato_upgrade_cost:
+		profit -= potato_upgrade_cost
+		emit_signal("profit_changed", profit)
+		potato_amount *= 1.5
+		potato_upgrade_cost *= 2
+		update_potato()
 	else:
 		pass
