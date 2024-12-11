@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cprjjm5h4ekcu"]
+[gd_scene load_steps=13 format=3 uid="uid://cprjjm5h4ekcu"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_m7lfg"]
 [ext_resource type="Texture2D" uid="uid://brin51inge757" path="res://Assets/17520.webp" id="2_kl1qn"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bkjdhd1u2i3el" path="res://Assets/Updated Locked Button.png" id="7_8fumg"]
 [ext_resource type="Texture2D" uid="uid://d0c6eqx33ixas" path="res://Assets/Crops/Beet/Beet Button Unclicked.png" id="8_ry3h1"]
 [ext_resource type="Texture2D" uid="uid://bjh4n7jxxna6v" path="res://Assets/Crops/Beet/Beet Button Clicked.png" id="9_eimd4"]
+[ext_resource type="Texture2D" uid="uid://dq3vfvrkx0dfd" path="res://Assets/Crops/Potato/Potato Button Unclicked.png" id="10_vdtbx"]
+[ext_resource type="Texture2D" uid="uid://b6v7fv0y1qlls" path="res://Assets/Crops/Potato/Potato Button Clicked.png" id="11_pfcwf"]
 
 [node name="game" type="Control"]
 layout_mode = 3
@@ -184,8 +186,8 @@ layout_mode = 2
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 disabled = true
-texture_normal = ExtResource("8_ry3h1")
-texture_pressed = ExtResource("9_eimd4")
+texture_normal = ExtResource("10_vdtbx")
+texture_pressed = ExtResource("11_pfcwf")
 texture_disabled = ExtResource("7_8fumg")
 stretch_mode = 0
 

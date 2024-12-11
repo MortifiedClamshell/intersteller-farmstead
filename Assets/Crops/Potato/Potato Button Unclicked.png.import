@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cafx8fn42t4nk"
-path="res://.godot/imported/3875f5e49345.png-bbbf2193ea627f2e5904407a1e60f657.ctex"
+uid="uid://dq3vfvrkx0dfd"
+path="res://.godot/imported/Potato Button Unclicked.png-acab5dce0309ffe2f45675911d71e286.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/3875f5e49345.png"
-dest_files=["res://.godot/imported/3875f5e49345.png-bbbf2193ea627f2e5904407a1e60f657.ctex"]
+source_file="res://Assets/Crops/Potato/Potato Button Unclicked.png"
+dest_files=["res://.godot/imported/Potato Button Unclicked.png-acab5dce0309ffe2f45675911d71e286.ctex"]
 
 [params]
 
