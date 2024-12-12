@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cprjjm5h4ekcu"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_m7lfg"]
-[ext_resource type="Texture2D" uid="uid://brin51inge757" path="res://Assets/17520.webp" id="2_kl1qn"]
+[ext_resource type="Texture2D" uid="uid://u30gr5lxn3p0" path="res://Assets/Background.png" id="2_qcbb4"]
 [ext_resource type="Texture2D" uid="uid://wa4tu1dh5pio" path="res://Assets/Crops/Wheat/Updated Wheat Unclicked.png" id="3_j73ll"]
 [ext_resource type="Script" path="res://Scenes/counter.gd" id="3_uxv5b"]
 [ext_resource type="Texture2D" uid="uid://bt0ettrnkr6km" path="res://Assets/Crops/Wheat/Updated Wheat Clicked.png" id="4_go8a0"]
@@ -23,10 +23,13 @@ grow_vertical = 2
 script = ExtResource("1_m7lfg")
 
 [node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1157.0
-offset_bottom = 656.0
-texture = ExtResource("2_kl1qn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qcbb4")
 expand_mode = 1
 
 [node name="Cropsbg" type="ColorRect" parent="."]
